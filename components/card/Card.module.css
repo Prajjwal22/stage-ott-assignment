@@ -11,9 +11,10 @@
     max-width: 300px;
     height: -webkit-fill-available;
     border-radius: 5px;
+    background: #000;
 }
 
-    
+
 
 .cardImage img {
     object-fit: cover;

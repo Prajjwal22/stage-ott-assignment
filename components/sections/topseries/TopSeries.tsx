@@ -9,21 +9,26 @@ type topSeriesProps = {
 };
 
 export default function TopSeries({ data, title }: topSeriesProps) {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setScreenWidth(window.innerWidth);
-      const handleResize = () => {
-        setScreenWidth(window.innerWidth);
-      };
-      window.addEventListener("resize", handleResize);
-
-      // Cleanup function to remove event listener
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
+    const [screenSize, setScreenSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    
+      useEffect(() => {
+        const handleResize = () => {
+          setScreenSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        // Clean up the event listener when the component unmounts
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
 
   return (
     <section className={styles.topList}>
@@ -35,9 +40,9 @@ export default function TopSeries({ data, title }: topSeriesProps) {
             index={index}
             series={series}
             baseImageURI={
-              screenWidth > 620 ? data.rootUrlHorizontal : data.rootUrlVertical
+                screenSize.width > 620 ? data.rootUrlHorizontal : data.rootUrlVertical
             }
-            isMobile={screenWidth < 620 ? true : false}
+            isMobile={screenSize.width < 620 ? true : false}
           />
         ))}
       </div>
