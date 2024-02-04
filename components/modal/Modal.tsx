@@ -10,12 +10,14 @@ type modalProp = {
   data: Language[];
   setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
   handleChangeLang: () => void;
+  setSelectedLang: React.Dispatch<React.SetStateAction<Language>>;
 };
 
 export default function Modal({
   data,
   setIsShow,
   handleChangeLang,
+  setSelectedLang,
 }: modalProp) {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -35,6 +37,9 @@ export default function Modal({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [setIsShow]);
+  const handleSelectLanguage = (lang: Language) => {
+    setSelectedLang(lang);
+  };
 
   return (
     <div className={styles.modalContainer}>
@@ -50,7 +55,7 @@ export default function Modal({
           <span className={styles.langText}>Select Your Language</span>
           <div className={styles.langList}>
             {data.map((lang, index) => (
-              <LanguageCard key={index} lang={lang} />
+              <LanguageCard key={index} lang={lang} onSelectLanguage={handleSelectLanguage} />
             ))}
           </div>
           <Button setIsShow={setIsShow} color="red" text="Continue" />

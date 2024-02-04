@@ -19,6 +19,10 @@ export default function Header() {
   const handleChangeLang = () => {
     alert("orajwa");
   };
+
+  useEffect(() => {
+    document.body.classList.toggle("modal-open", isShow);
+  }, [isShow]);
   return (
     <>
       {isShow && (
@@ -26,6 +30,7 @@ export default function Header() {
           data={languages}
           setIsShow={setIsShow}
           handleChangeLang={handleChangeLang}
+          setSelectedLang={setSelectedLang}
         />
       )}
       <header className={styles.headerWrapper}>
@@ -42,10 +47,10 @@ export default function Header() {
               {selectedLang.language} <ChevronDown size={20} />
             </span>
             <Link href="/search">
-              <SearchIcon />
+              <SearchIcon size={25} />
             </Link>
             <Link href="/settings">
-              <Settings />
+              <Settings size={25} />
             </Link>
           </nav>
         </div>
