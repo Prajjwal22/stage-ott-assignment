@@ -1,3 +1,5 @@
+//Type Definitions for Different Data
+
 type seriesData = {
   rootUrlHorizontal: string;
   rootUrlVertical: string;
@@ -21,3 +23,10 @@ type carouselData = {
   ratio2: string;
   ratio3: string;
 };
+
+
+
+type Language = {
+  language:string
+  image:string
+}

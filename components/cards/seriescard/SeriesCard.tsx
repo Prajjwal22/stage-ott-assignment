@@ -1,19 +1,21 @@
 import Image from "next/image";
 import React from "react";
-import styles from "./Card.module.css";
+import styles from "./SeriesCard.module.css";
 
 type seriesProps = {
   series: rowData;
   baseImageURI: string;
   index: number;
   isMobile: boolean;
+  showRank: boolean;
 };
 
-export default function Card({
+export default function SeriesCard({
   series,
   baseImageURI,
   index,
   isMobile,
+  showRank,
 }: seriesProps) {
   return (
     <div className={styles.cardWrapper}>
@@ -29,7 +31,7 @@ export default function Card({
           alt="text"
         />
       </div>
-      <span className={styles.cardNumber}>{index + 1}</span>
+      {showRank && <span className={styles.cardNumber}>{index + 1}</span>}
     </div>
   );
 }

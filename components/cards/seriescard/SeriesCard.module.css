@@ -1,7 +1,7 @@
 .cardWrapper {
     min-width: 300px;
     height: 180px;
-    border-radius: 5px;
+    border-radius: 8px;
     position: relative;
     padding: 3px;
     background: linear-gradient(83deg, rgba(127,108,58,1) 0%, rgb(245, 174, 80) 49%, rgba(127,108,58,1) 100%);
@@ -10,7 +10,7 @@
 .cardImage {
     max-width: 300px;
     height: -webkit-fill-available;
-    border-radius: 5px;
+    border-radius: 8px;
     background: #000;
 }
 
@@ -20,6 +20,7 @@
     object-fit: cover;
     overflow: hidden;
     max-width: 100%;
+    border-radius: 8px;
     height: 100%
 }
 

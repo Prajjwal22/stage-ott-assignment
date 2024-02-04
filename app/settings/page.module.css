@@ -1,0 +1,44 @@
+.container {
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
+    background-color: black;
+    top: 0;
+    padding: 20px;
+}
+
+
+.wrapper {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    font-size: 1rem;
+}
+
+.desc {
+    font-size: .8rem;
+    color: yellow;
+    text-align: center;
+}
+
+.settingsList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.settingItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.settingItem:hover {
+    background-color: rgb(34, 34, 34);
+}

@@ -7,12 +7,11 @@ import React, {
   useState,
 } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { flushSync } from "react-dom";
 import styles from "./Carousel.module.css";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import Autoplay from "embla-carousel-autoplay";
 import { EmblaCarouselType, EmblaOptionsType } from "embla-carousel";
-import useMediaQuery from "@/hooks/useMediaQuery";
+import Image from "next/image";
 
 type PropType = PropsWithChildren<
   React.DetailedHTMLProps<
@@ -23,16 +22,17 @@ type PropType = PropsWithChildren<
 
 type slidesProps = {
   slides: featuredData;
+  isDesktop: boolean;
 };
-const EmblaCarousel = ({ slides }: slidesProps) => {
-  const isDesktop = useMediaQuery("(min-width:768px)");
-
+export default function Carousel({ slides, isDesktop }: slidesProps) {
   const { rootUrl, carousel } = slides;
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     WheelGesturesPlugin(),
     Autoplay({ speed: 10 }),
   ]);
+
+  //State to keep track of current slide in carousel
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onScroll = useCallback(() => {
@@ -42,6 +42,8 @@ const EmblaCarousel = ({ slides }: slidesProps) => {
     (index: number) => emblaApi && emblaApi.scrollTo(index),
     [emblaApi]
   );
+
+  //Dots Selection
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, []);
@@ -52,9 +54,6 @@ const EmblaCarousel = ({ slides }: slidesProps) => {
     emblaApi.on("select", onSelect);
     onScroll();
 
-    emblaApi.on("scroll", () => {
-      flushSync(() => onScroll());
-    });
     emblaApi.on("reInit", onScroll);
   }, [emblaApi, onScroll, onSelect]);
 
@@ -70,14 +69,16 @@ const EmblaCarousel = ({ slides }: slidesProps) => {
         <div className={styles.embla__viewport} ref={emblaRef}>
           <div className={styles.embla__container}>
             {carousel.map((slide, index) => (
-              <div className={styles.embla__slide} key={index}>
+              <div className={styles.embla__slide} key={slide._id}>
                 <div className={styles.embla__slide__number}>
                   <span>{index + 1}</span>
                 </div>
-                <img
+                <Image
                   className={styles.embla__slide__img}
                   src={`${rootUrl}/${isDesktop ? slide.ratio2 : slide.ratio1}`}
                   alt={`Side: ${slide.ratio2}`}
+                  width={1200}
+                  height={800}
                 />
               </div>
             ))}
@@ -97,6 +98,4 @@ const EmblaCarousel = ({ slides }: slidesProps) => {
       </div>
     </>
   );
-};
-
-export default EmblaCarousel;
+}

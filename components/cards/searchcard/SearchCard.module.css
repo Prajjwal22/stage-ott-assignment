@@ -1,0 +1,9 @@
+.searchCard {
+    width: 200px;
+    height: 100px;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}

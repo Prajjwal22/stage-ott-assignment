@@ -1,0 +1,56 @@
+.container {
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
+    background-color: black;
+    top: 0;
+    padding: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.header{
+    display: inline-flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+
+.searchBar {
+    width: 100%;
+    position: relative;
+}
+.wrapper input {
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    outline: none;
+    border: 1px solid gray;
+    background: none;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 8px;
+}
+
+.genreList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-left: 20px;
+    overflow-x: scroll;
+}
+
+.genreList::-webkit-scrollbar {
+    display: none;
+}

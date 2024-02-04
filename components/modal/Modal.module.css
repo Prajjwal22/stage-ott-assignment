@@ -1,0 +1,49 @@
+.modalContainer {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.323);
+    position: absolute;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.modalWrapper {
+    height: 600px;
+    width: 700px;
+    background-color: #000;
+    border:3px solid gray;
+    border-radius:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}  
+
+.logo {
+    max-width: 70px;
+    height: auto;
+}
+
+.langList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.langText {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+
+
+@media (max-width: 450px) {
+
+    .modalWrapper {
+        width:100%;
+    }
+}
