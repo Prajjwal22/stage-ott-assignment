@@ -7,7 +7,7 @@ export default async function Home() {
   let topSeries = await getRowData();
   return (
     <>
-      <TopSeries data={topSeries.data} />
+      <TopSeries title="Top 20 in Haryana" data={topSeries.data} />
     </>
   );
 }

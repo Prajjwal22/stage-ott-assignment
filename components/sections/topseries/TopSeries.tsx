@@ -5,25 +5,29 @@ import Card from "@/components/card/Card";
 
 type topSeriesProps = {
   data: seriesData;
+  title: string;
 };
 
-export default function TopSeries({ data }: topSeriesProps) {
-  const [screenWidth, setScreenWidth] = useState(0);
+export default function TopSeries({ data, title }: topSeriesProps) {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {
-    const handleResize = () => {
+    if (typeof window !== "undefined") {
       setScreenWidth(window.innerWidth);
-    };
+      const handleResize = () => {
+        setScreenWidth(window.innerWidth);
+      };
+      window.addEventListener("resize", handleResize);
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      // Cleanup function to remove event listener
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   return (
     <section className={styles.topList}>
-      <span className={styles.headerTitle}>Top 20 in Haryana</span>
+      <span className={styles.headerTitle}>{title}</span>
       <div className={styles.seriesList}>
         {data.rowData.map((series, index) => (
           <Card
