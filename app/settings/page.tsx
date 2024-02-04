@@ -8,7 +8,7 @@ export default function SettingsPage() {
     <main className={styles.container}>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>Subscription</h2>
-        <span className={styles.desc}>Upgrate to premium membership</span>
+        <span className={styles.desc}>Upgrade to premium membership</span>
         <Button text="Recharge Now!" color="red" />
         <div className={styles.settingsList}>
           <span className={styles.settingItem}>
