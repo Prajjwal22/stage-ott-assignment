@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TopSeries.module.css";
 import Card from "@/components/card/Card";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 type topSeriesProps = {
   data: seriesData;
@@ -9,26 +10,8 @@ type topSeriesProps = {
 };
 
 export default function TopSeries({ data, title }: topSeriesProps) {
-    const [screenSize, setScreenSize] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    
-      useEffect(() => {
-        const handleResize = () => {
-          setScreenSize({
-            width: window.innerWidth,
-            height: window.innerHeight,
-          });
-        };
-    
-        window.addEventListener('resize', handleResize);
-    
-        // Clean up the event listener when the component unmounts
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-      }, []);
+  const isMobile = useMediaQuery("(max-width: 620px)");
+  let baseImageURI = isMobile ? data.rootUrlVertical : data.rootUrlHorizontal;
 
   return (
     <section className={styles.topList}>
@@ -39,10 +22,8 @@ export default function TopSeries({ data, title }: topSeriesProps) {
             key={series._id}
             index={index}
             series={series}
-            baseImageURI={
-                screenSize.width > 620 ? data.rootUrlHorizontal : data.rootUrlVertical
-            }
-            isMobile={screenSize.width < 620 ? true : false}
+            baseImageURI={baseImageURI}
+            isMobile={isMobile}
           />
         ))}
       </div>

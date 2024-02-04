@@ -3,8 +3,6 @@
     padding: 5px 10px;
 }
 
-
-
 .headerContainer {
     display: flex;
     justify-content: space-between;
@@ -25,11 +23,23 @@
 }
 
 .navItem {
-    font-size: .8rem;
-display:flex;
-align-items: center;
-border:1px solid #fff;
-padding:5px;
-border-radius: 10px;
-cursor: pointer;
+    font-size: .7rem;
+    display: flex;
+    align-items: center;
+    border: 1px solid #fff;
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 450px) {
+
+    .headerWrapper {
+        height: 50px
+    }
+
+    .logo {
+        width: 100px;
+    }
 }

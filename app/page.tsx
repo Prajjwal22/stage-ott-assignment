@@ -8,10 +8,9 @@ export default async function Home() {
   let topSeries = await getRowData();
   let featuredSeries = await getCarouselData();
 
-  console.log(featuredSeries);
   return (
     <>
-      <EmblaCarousel slides={featuredSeries.data.carousel} />
+      <EmblaCarousel slides={featuredSeries.data} />
       <TopSeries title="Top 20 in Haryana" data={topSeries.data} />
     </>
   );

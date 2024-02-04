@@ -9,3 +9,15 @@ type rowData = {
   horizontal: string;
   vertical: string;
 };
+
+type featuredData = {
+  rootUrl: string;
+  carousel: carouselData[];
+};
+
+type carouselData = {
+  _id: string;
+  ratio1: string;
+  ratio2: string;
+  ratio3: string;
+};

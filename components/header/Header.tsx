@@ -18,7 +18,9 @@ export default function Header() {
           alt="Stage OTT"
         />
         <nav className={styles.navContainer}>
-          <span className={styles.navItem}>{language} <ChevronDown/></span>
+          <span className={styles.navItem}>
+            {language} <ChevronDown size={20} />
+          </span>
           <SearchIcon />
           <Settings />
         </nav>

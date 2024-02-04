@@ -44,7 +44,7 @@
     }
   }
   
-  @media (max-width: 450px) {
+  @media (max-width: 480px) {
     .cardWrapper {
       min-width: 120px; 
       height: 180px;
